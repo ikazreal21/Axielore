@@ -1,0 +1,18 @@
+{% extends 'post/base.html' %}
+{% block content %}
+<form action="" method="POST">
+			{% csrf_token %}
+			<label>User Name: </label>
+			<input type="text" name="username">
+			<label>Password: </label>
+			<input type="password" name="password">
+			<div class="btn-flex">
+				<button type="submit" class="btn">Login</button>
+				<button type="reset" class="btn">Reset</button>
+			</div>
+			{% for i in messages %}
+				<p class="message">{{i}}</p>
+			{% endfor %}
+			<p>Need to Register? Click <a href="{% url 'register' %}">here</a></p>
+		</form>
+ {% endblock %}

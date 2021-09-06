@@ -1,0 +1,29 @@
+{% extends 'post/base.html' %}
+{% load static %}
+{% block content %}
+<a href="{% url 'index' %}">Go back</a>
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h2>Create a Post</h2>
+        <div class="username">
+            <label>Title: </label>
+            {{form.title}}
+        </div>
+        <div class="username">
+            <label>Description: </label>
+            {{form.description}}
+        </div>
+        <div class="username">
+            <label>Email for Contact: </label>
+            {{form.email}}
+        </div>
+         <div class="username">
+            <label>Upload image: </label>
+            {{form.post_image}}
+        </div>
+        <div>
+            <button type="submit">Save</button>
+            <button type="reset">Reset</button>
+        </div>
+    </form>
+{% endblock %}

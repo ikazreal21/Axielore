@@ -1,0 +1,13 @@
+{% extends 'post/base.html' %}
+{% load static %}
+{% block content %}
+    <a href="{% url 'index' %}">Go back</a>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <label>Delete a Room</label>
+        <h2>{{post.title}}</h2>
+        <div>
+            <button type="submit">Confirm</button>
+        </div>
+    </form>
+{% endblock %}

@@ -75,7 +75,7 @@ def Register(request):
     if request.user.is_authenticated:
         return redirect("index")
     else:
-        # form = UserCreationForm()
+        form = CreateUserForm()
         if request.method == "POST":
             form = CreateUserForm(request.POST)
             if form.is_valid():
@@ -84,8 +84,8 @@ def Register(request):
                 messages.success(request, "Account Created For " + user)
                 return redirect("login")
 
-    # context = {"register": form}
-    return render(request, "post/register.html")
+    context = {"register": form}
+    return render(request, "post/register.html", context)
 
 
 def Logout(request):

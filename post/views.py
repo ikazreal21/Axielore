@@ -18,6 +18,7 @@ def PostFeed(request):
     return render(request, "post/postfeed.html", context)
 
 
+@login_required(login_url="login")
 def CreatePost(request):
     postform = PostForm()
     if request.method == 'POST':
@@ -30,6 +31,7 @@ def CreatePost(request):
     return render(request, "post/createpost.html", context)
 
 
+@login_required(login_url="login")
 def UpdatePost(request, pk):
     post = Post.objects.get(rndid=pk)
     postform = PostForm(instance=post)
@@ -43,6 +45,7 @@ def UpdatePost(request, pk):
     return render(request, 'post/update.html', {'form': postform})
 
 
+@login_required(login_url="login")
 def DeletePost(request, pk):
     post = Post.objects.get(rndid=pk)
     if request.method == 'POST':
@@ -72,17 +75,17 @@ def Register(request):
     if request.user.is_authenticated:
         return redirect("index")
     else:
-        form = UserCreationForm()
+        # form = UserCreationForm()
         if request.method == "POST":
-            form = UserCreationForm(request.POST)
+            form = CreateUserForm(request.POST)
             if form.is_valid():
                 form.save()
                 user = form.cleaned_data.get("username")
                 messages.success(request, "Account Created For " + user)
                 return redirect("login")
 
-    context = {"register": form}
-    return render(request, "post/register.html", context)
+    # context = {"register": form}
+    return render(request, "post/register.html")
 
 
 def Logout(request):

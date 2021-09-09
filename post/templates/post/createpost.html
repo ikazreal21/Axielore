@@ -1,25 +1,29 @@
 {% extends 'post/base.html' %}
 {% load static %}
 {% block content %}
-<a href="{% url 'index' %}">Go back</a>
+    <a href="{% url 'index' %}">Go back</a>
     <form action="" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <h2>Create a Post</h2>
         <div class="username">
             <label>Title: </label>
-            {{form.title}}
+            <input type="text" name="title" required>
+            <!-- {{form.title}} -->
         </div>
         <div class="username">
             <label>Description: </label>
-            {{form.description}}
+            <textarea name="description"></textarea>
+            <!-- {{form.description}} -->
         </div>
         <div class="username">
             <label>Email for Contact: </label>
-            {{form.email}}
+            <input type="text" name="email">
+            <!-- {{form.email}} -->
         </div>
-         <div class="username">
+        <div class="username">
             <label>Upload image: </label>
-            {{form.post_image}}
+            <input type="file" name="post_image">
+            <!-- {{form.post_image}} -->
         </div>
         <div>
             <button type="submit">Save</button>

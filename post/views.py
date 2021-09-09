@@ -20,15 +20,15 @@ def PostFeed(request):
 
 @login_required(login_url="login")
 def CreatePost(request):
-    postform = PostForm()
+    # postform = PostForm()
     if request.method == 'POST':
         postform = PostForm(request.POST, request.FILES)
         if postform.is_valid():
             postform.save(commit=False).user = request.user
             postform.save()
         return redirect("index")
-    context = {'form': postform}
-    return render(request, "post/createpost.html", context)
+    # context = {'form': postform}
+    return render(request, "post/createpost.html")
 
 
 @login_required(login_url="login")

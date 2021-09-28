@@ -1,3 +1,3 @@
 # Axielore
 
-A social Media App using Only WSGI 
+A Social Media App Centering About NFT Posting and Axie Posting built on top of Django
